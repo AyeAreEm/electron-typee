@@ -1,4 +1,8 @@
 const stringSimilarity = require('string-similarity');
+const Datastore = require('nedb');
+
+const db = new Datastore('database.nedb');
+db.loadDatabase();
 
 const show_sentence = document.getElementById('sentence');
 const input = document.getElementById('input');
@@ -48,5 +52,7 @@ input.addEventListener('keypress', e => {
         
         const accuracy = Math.round(stringSimilarity.compareTwoStrings(sentence, input.value) * 100);
         stats.innerHTML = `wpm: ${wpm} <br> accuracy: ${accuracy}%`;
+
+        db.insert({wpm: wpm, accuracy: accuracy, seconds: seconds});
     }
 })

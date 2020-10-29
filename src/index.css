@@ -38,3 +38,9 @@ textarea {
   color: rgb(56, 56, 56);
   background: rgb(103, 46, 235);
 }
+
+a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
